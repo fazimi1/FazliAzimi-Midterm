@@ -3,30 +3,56 @@ Please answer the below core-java Questions:
 What is programing language?
 A.
 
-
+A programming language is a formal language, which comprises a set of instructions used to produce various kinds of output.
 
 
 What jdk contains or composed of and define each components?
 A.
-
+Java Interpreter - Java interpreter is used to interpret the .class Java files that have been compiled by Java compiler (javac)
+Java Disassembler - disassembles one or more class files.
+Java Header file generator - generates C header and source files that are needed to implement native methods.
+java documentation - helps to maintain code
+java debugger -  provides inspection and debugging of a local or remote Java Virtual Machine.
 
 
 
 
 What is IDE?
 A.
+Integrated Development environment
 What are the IDEs available in the market to support java?
+Netbeans, eclipse, Android Studio, Intellij, Bluej
 Explain the entire java life cycle.
-what is class?
-What is object?
-What is the entry point of an application?
-Why main is static?
-Which class is the superclass of all classes?
+Input Unit recieves data from the input devices such as the keyboard, mouse and any other peripherals
+
+Memory Unit the primary memory unit (Random Access Memory(RAM)) provides fast access storage of computer programs, data from the input devices and data to be sent to the output devices.
+
+Arithmetic and Logic Unit (ALU) peforms the arithmetic calculations on data in memory, such as addition, subtraction, multiplication, division and comparison.
+
+Central Processing Unit (CPU) manages the other units by sending messages to the input unit to read data into the memory unit, informs the ALU which data to operate on, etc.
+
+Storage Unit stores and reads data and programs in long-term storage (e.g. harddisk drive) to be used at a later time.
+
+Output Unit sends information from the computer to make it available outside of the computer, e.g. printer, network device etc.
+what is class? A blueprint or template for creating objects.
+What is object? An instance of a class.
+What is the entry point of an application? The main method.
+Why main is static? It is the entry point for the JVM(Java Virtual Machine) into the java program therefor static methods and variables can be directly accessed with the help of Class,
+which means that there is no need to create objects in order to access static methods or variables.
+Which class is the superclass of all classes? Object class
 What is difference between path and classpath variables?
+Path is an environment variable which is used by the operating system to find the executables. Classpath is an environment variable which is used by the Java compiler to find the path.
 What is the difference between an Interface and Abstract class?
+Abstract classes can have methods with implementation whereas interface provides absolute abstraction and can't have any method implementations. Abstract classes can have constructors but interfaces can't have constructors.
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?
+we cant create object of abstract class. you can implement the Abstract class / interface in a new class
 what is Access Specifier?
+private, default, protected, public
 What is OOP ? Define each feature of java OOP.
+abstraction: Abstraction is the concept of hiding the internal details and describing things in simple terms.
+ encapsulation: encapsulation is used for access restriction to class members and methods.
+  inheritance: an object is based on another object.
+  polymorphism: an object behaves differently in different situations.
 What is Java Package and which package is imported by default?
 What is API? Name list of API that you have used so far.
 Does java support multiple inheritance, explain why or why not?

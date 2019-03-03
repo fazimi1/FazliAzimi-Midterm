@@ -1,5 +1,10 @@
 package datastructure;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public class UseMap {
 
 	public static void main(String[] args) {
@@ -10,7 +15,24 @@ public class UseMap {
 		 *
 		 * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
 		 */
+		List<String> carBrands = new ArrayList<String>();
+		carBrands.add("Toyota");
+		carBrands.add("Lexus");
+		carBrands.add("Acura");
+		carBrands.add("Honda");
 
+		List<String> exoticBrands = new ArrayList<String>();
+		exoticBrands.add("Lamborghini");
+		exoticBrands.add("Ferrari");
+		exoticBrands.add("McLarren");
+
+		Map<String, List<String>> map = new LinkedHashMap<String,List<String>>();
+		map.put("RegularBrands", carBrands);
+		map.put("ExoticBrands", exoticBrands);
+
+		for(Map.Entry<String, List<String>> car:map.entrySet()){
+			System.out.println(car.getKey() + " "+car.getValue());
+		}
+	}
 	}
 
-}
