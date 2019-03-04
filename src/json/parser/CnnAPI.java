@@ -92,7 +92,8 @@ public class CnnAPI {
 
         }
         for (News entry : newsList) {
-            System.out.println(entry.getAuthor() + " " + entry.getDescription() + " " + entry.getUrl() + " " + entry.getTitle());
+            System.out.println(entry.getAuthor() + " " + entry.getDescription() + " " + entry.getUrl() + " " + entry.getTitle()
+                    + " " + entry.getContent() + " " + entry.getPublishedAt()+ " " + entry.getSource() + " " + entry.getUrlToImage());
         }
     }
 }
