@@ -1,5 +1,19 @@
 package json.parser;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CnnAPI {
     /*
       You can get API_KEY from this below link. Once you have the API_KEY, you can fetch the top-headlines news.
@@ -37,4 +51,48 @@ public class CnnAPI {
 	   Store into choice of your database and retrieve.
 
      */
+    public static void main(String[] args)throws MalformedURLException, IOException {
+        String sURL = " https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=0d9e35dfa3c140aab8bf9cdd70df957f";
+
+        News emp = null;
+
+        List<News> newsList = new ArrayList<>();
+        URL urls = new URL(sURL);
+        URLConnection request = urls.openConnection();
+        request.connect();
+        JsonArray  jsonArray = null;
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+        if (root instanceof JsonObject) {
+            JsonObject rootObj = root.getAsJsonObject();
+        } else if (root instanceof JsonArray) {
+            jsonArray =  root.getAsJsonArray();   String  source = null;
+
+
+
+        }
+        for (int i = 0; i < jsonArray.size() - 1; i++) {
+            try {
+                JsonObject jsonobject = jsonArray.get(i).getAsJsonObject();
+                //you code start here
+                String author = jsonobject.get("author").toString();
+                String title = jsonobject.get("title").toString();
+                String description = jsonobject.get("description").toString();
+                String url = jsonobject.get("url").toString();
+                String urlToImage = jsonobject.get("urlToImage").toString();
+                String publishedAt = jsonobject.get("publishedAt").toString();
+                String content = jsonobject.get("content").toString();
+                String source = jsonobject.get("source").toString();
+                emp = new News(author,title, description, url, urlToImage,publishedAt, content, source);
+                newsList.add(emp);
+
+
+            } catch (Exception ex) {
+            }
+
+        }
+        for (News entry : newsList) {
+            System.out.println(entry.getAuthor() + " " + entry.getDescription() + " " + entry.getUrl() + " " + entry.getTitle());
+        }
+    }
 }
