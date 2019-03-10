@@ -45,7 +45,12 @@ public class EmployeeInfo {
 		this.employeeId = employeeId;
 
 	}
-	
+	public void assignDepartment(String departmentName) {
+		this.departmentName = departmentName;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
 	/*
 	 * This methods should calculate Employee bonus based on salary and performance.
 	 * Then it will return the total yearly bonus. So you need to implement the logic.
@@ -54,9 +59,25 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
-		int total=0;
-		return total;
+	public static int calculateEmployeeBonus(int numberOfYearsWithCompany, double yearlySalary){
+		double Bonus = 0.00;
+		if (numberOfYearsWithCompany == 5) {
+			Bonus = yearlySalary* 0.1;
+		} else if (numberOfYearsWithCompany == 4) {
+			Bonus = yearlySalary * 0.08;
+		} else if (numberOfYearsWithCompany == 3) {
+			Bonus = yearlySalary * 0.06;
+		} else if (numberOfYearsWithCompany == 2) {
+			Bonus = 0;
+			System.out.println("Your performance is poor, try to improve.");
+		} else {
+			Bonus = 0;
+			System.out.println("You don't deserve bonus.");
+		}
+		return (int) Bonus;
+
+
+
 	}
 	
 	/*

@@ -14,7 +14,25 @@ public class FortuneEmployee {
 	 *
 	 **/
 	public static void main(String[] args) {
-		
+
+
+
+		EmployeeInfo employee1 = new EmployeeInfo("Bob Garcia", 123456);
+		EmployeeInfo employee2 = new EmployeeInfo("Anthony Milton", 123457);
+		EmployeeInfo employee3 = new EmployeeInfo("Tony Stark", 123458);
+		EmployeeInfo employee4 = new EmployeeInfo("Dave Jefferson", 123459);
+
+
+		employee1.assignDepartment("Marketing");
+		employee2.assignDepartment("Information Technology");
+		employee3.assignDepartment("Accounting");
+		employee4.assignDepartment("Finance");
+	;
+
+		employee1.setSalary(10000);
+		employee2.setSalary(12000);
+		employee3.setSalary(10000);
+		employee4.setSalary(1100);
 
 
 	}
