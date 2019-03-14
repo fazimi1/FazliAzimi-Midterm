@@ -5,9 +5,7 @@ import databases.ConnectToSqlDB;
 import java.util.List;
 import java.util.Random;
 
-/*
- *Created by mrahman on 04/02/2018.
- */
+
 public class Numbers {
 
 	/*
@@ -22,7 +20,7 @@ public class Numbers {
 
 	public static void main(String[] args) throws Exception {
 		
-		int [] num = new int[10];
+		int [] num = new int[1000];
 		storeRandomNumbers(num);
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		//Selection Sort
@@ -64,8 +62,7 @@ public class Numbers {
 	public static void randomize( int arr[], int n)
 	{
 		Random r = new Random();
-		// Start from the last element and swap one by one. We don't
-		// need to run for the first element that's why i > 0
+
 		for (int i = n-1; i > 0; i--) {
 			int j = r.nextInt(i);
 			int temp = arr[i];

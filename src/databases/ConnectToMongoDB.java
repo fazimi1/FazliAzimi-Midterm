@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by mrahman on 09/09/18.
- */
 
 public class ConnectToMongoDB {
 
@@ -98,7 +95,7 @@ public class ConnectToMongoDB {
     }
 
     public static void main(String[] args){
-        insertIntoToMongoDB(new User("Naomi Chan", "4493","07-1996"));
+        insertIntoToMongoDB(new User("Robert", "6796","07-1999"));
         List<User> user = readUserProfileFromMongoDB();
         for(User person:user){
             System.out.println(person.getStName()+ " "+ person.getStID());
