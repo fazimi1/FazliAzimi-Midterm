@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends CompanyInfo implements Employee{
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -24,8 +24,11 @@ public class EmployeeInfo {
 	int employeeId;
 	String employeeName;
 	String departmentName;
-	int salary;
+
 	String benefit;
+	private static int yearsWithCompany;
+	private int salary;
+	private String performance;
 	
 	/*
 	 * You must implement the logic for below 2 methods and 
@@ -37,20 +40,21 @@ public class EmployeeInfo {
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
-	public EmployeeInfo(int employeeId){
-		this.employeeId = employeeId;
-	}
-    public EmployeeInfo(String name, int employeeId){
-		this.employeeName = employeeName;
-		this.employeeId = employeeId;
+	public EmployeeInfo(int employeeId, int salary) {
 
+		this.employeeId = employeeId;
+		this.salary = salary;
+	}
+
+    public EmployeeInfo(String bob_garcia, int yearsWithCompany){
+		this.yearsWithCompany= yearsWithCompany;
 	}
 	public void assignDepartment(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
+
+
+
 	/*
 	 * This methods should calculate Employee bonus based on salary and performance.
 	 * Then it will return the total yearly bonus. So you need to implement the logic.
@@ -59,7 +63,27 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany, double yearlySalary){
+	public String setPerformance (int score){
+
+		if (score == 5)
+			performance = "Best performance";
+
+		if (score == 3)
+			performance = "Average performance";
+
+		if (score == 1)
+			performance = "Poor performance";
+
+		return performance;
+	}
+
+	public String getPerformance (){
+
+		return this.performance;
+
+
+	}
+	public static int calculateEmployeeBonus(int numberOfYearsWithCompany, String yearlySalary){
 		double Bonus = 0.00;
 		if (numberOfYearsWithCompany == 5) {
 			Bonus = yearlySalary* 0.1;
@@ -86,7 +110,7 @@ public class EmployeeInfo {
 	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
 	 * 
 	 */
-	public static int calculateEmployeePension(){
+	public static int calculateEmployeePension(int salary){
 		int total=0;
 		Scanner sc  = new Scanner(System.in);
 		System.out.println("Please enter start date in format (example: May,2015): ");
@@ -95,13 +119,62 @@ public class EmployeeInfo {
 		String todaysDate = sc.nextLine();
         String convertedJoiningDate = DateConversion.convertDate(joiningDate);
         String convertedTodaysDate = DateConversion.convertDate(todaysDate);
-
+		String startYear = convertedJoiningDate.substring(convertedJoiningDate.length() - 4, convertedJoiningDate.length());
+		String currentYear = convertedTodaysDate.substring(convertedTodaysDate.length() - 4, convertedTodaysDate.length());
         //implement numbers of year from above two dates
 		//Calculate pension
+		int start = Integer.parseInt(startYear);
+		int current = Integer.parseInt(currentYear);
+
+		yearsWithCompany = (current - start);
 
 
+
+		total = (int) (yearsWithCompany * 0.05 * salary);
+
+		System.out.println("Total yearly pension: $"  + total);
 
 		return total;
+	}
+
+	@Override
+	public int employeeId() {
+		return 0;
+	}
+
+	@Override
+	public String employeeName() {
+		return null;
+	}
+
+	@Override
+	public void assignDepartment() {
+
+	}
+
+	@Override
+	public int calculateSalary(int salary) {
+		return 0;
+	}
+
+	@Override
+	public void benefitLayout() {
+
+	}
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 	private static class DateConversion {
 

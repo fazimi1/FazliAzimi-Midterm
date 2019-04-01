@@ -1,5 +1,9 @@
 package design;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class FortuneEmployee {
 
 	/**
@@ -13,14 +17,14 @@ public class FortuneEmployee {
 	 * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
 	 *
 	 **/
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 
 
-		EmployeeInfo employee1 = new EmployeeInfo("Bob Garcia", 123456);
-		EmployeeInfo employee2 = new EmployeeInfo("Anthony Milton", 123457);
-		EmployeeInfo employee3 = new EmployeeInfo("Tony Stark", 123458);
-		EmployeeInfo employee4 = new EmployeeInfo("Dave Jefferson", 123459);
+		EmployeeInfo employee1 = new EmployeeInfo("Bob Garcia", 12);
+		EmployeeInfo employee2 = new EmployeeInfo("Anthony Milton", 13);
+		EmployeeInfo employee3 = new EmployeeInfo("Tony Stark", 10);
+		EmployeeInfo employee4 = new EmployeeInfo("Dave Jefferson", 15);
 
 
 		employee1.assignDepartment("Marketing");
@@ -29,12 +33,67 @@ public class FortuneEmployee {
 		employee4.assignDepartment("Finance");
 	;
 
-		employee1.setSalary(10000);
-		employee2.setSalary(12000);
-		employee3.setSalary(10000);
-		employee4.setSalary(1100);
+		employee1.setSalary(40000);
+		employee1.calculateSalary(employee1.getSalary());
+		employee2.setSalary(30000);
+		employee2.calculateSalary(employee2.getSalary());
+		employee3.setSalary(50000);
+		employee3.calculateSalary(employee3.getSalary());
+		employee4.setSalary(110000);
+		employee4.calculateSalary(employee4.getSalary());
+
+		employee1.setPerformance(5);
+		EmployeeInfo.calculateEmployeeBonus(employee1.getSalary(), employee1.getPerformance());
+
+		employee2.setPerformance(3);
+		EmployeeInfo.calculateEmployeeBonus(employee2.getSalary(), employee2.getPerformance());
+
+		employee3.setPerformance(5);
+		EmployeeInfo.calculateEmployeeBonus(employee3.getSalary(), employee3.getPerformance());
+
+		employee4.setPerformance(3);
+		EmployeeInfo.calculateEmployeeBonus(employee4.getSalary(), employee4.getPerformance());
+
+
+		EmployeeInfo.calculateEmployeePension(employee1.getSalary());
+
+
+
+		ArrayList<Object> emp1Record = new ArrayList<Object>();
+
+		emp1Record.add(employee1.getEmployeeId());
+		emp1Record.add(employee1.getEmployeeName());
+		emp1Record.add(employee1);
+		emp1Record.add(employee1.getSalary());
+		emp1Record.add(EmployeeInfo.calculateEmployeeBonus(employee1.getSalary(), employee1.getPerformance()));
+
+
+		ArrayList<Object> emp2Record = new ArrayList<Object>();
+		emp2Record.add(employee2.getEmployeeId());
+		emp2Record.add(employee2.getEmployeeName());
+		emp2Record.add(employee2);
+		emp2Record.add(employee2.getSalary());
+		emp2Record.add(EmployeeInfo.calculateEmployeeBonus(employee2.getSalary(), employee2.getPerformance()));
+
+
+
+		Map<Integer, ArrayList<Object>> employeeRecord = new HashMap<>();
+
+		employeeRecord.put(1, emp1Record);
+		employeeRecord.put(2, emp2Record);
+
+
+
+		for (Map.Entry<Integer, ArrayList<Object>> data :
+				employeeRecord.entrySet()) {
+
+			System.out.println(data.getKey());
+			System.out.println(data.getValue());
+		}
+
 
 
 	}
+	}
 
-}
+
